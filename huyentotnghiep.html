@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trương Thị Thu Huyền💖</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Dancing Script", cursive, "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #290b16, #53060f, #704f4c);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;   /* cho phép cuộn dọc */
+      padding: 40px 20px;
+      overflow-x: hidden;        /* chỉ ẩn tràn ngang */
+      position: relative;
+    }
+
+    section {
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    /* ----- HEART FLOAT ANIMATION ----- */
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(0.5); opacity: 0; }
+    }
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 18px;
+      color: #ff4f9f;
+      animation: floatUp 8s linear forwards;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ----- TEXT ----- */
+    .time h1 {
+      text-align: center;
+      font-size: 2rem;
+      color: #fffcfd;
+      margin-bottom: 30px;
+      animation: fadeIn 2s ease forwards, glowText 2s infinite alternate;
+      text-shadow: 0 0 10px rgba(105, 216, 164, 0.8);
+      line-height: 1.5;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes glowText {
+      from { text-shadow: 0 0 10px #ffb6c1; }
+      to   { text-shadow: 0 0 20px #ff4f9f, 0 0 35px #ff80b5; }
+    }
+
+    /* ----- CARD LAYOUT ----- */
+    .container1 {
+      display: flex;
+      justify-content: center;
+      margin: 30px auto;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    .card {
+      position: relative;
+      width: 260px;
+      height: 350px;
+      perspective: 1000px;
+    }
+    .card .content {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+      border: 2px solid rgba(255,182,193,0.7);
+    }
+.card:hover .content {
+  transform: scale(1.1) rotateY(10deg);
+  transition: 0.8s ease;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.4), 
+              0 0 30px rgba(0, 153, 255, 0.6);
+  background: linear-gradient(135deg, rgba(0,153,255,0.15), rgba(255,255,255,0.05));
+  backdrop-filter: blur(6px);
+}
+
+    /* ----- FRONT IMAGE ----- */
+    .card .imgBx {
+      position: absolute;
+      top:0; left:0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      backface-visibility: hidden;
+    }
+    .card .imgBx img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.6s;
+    }
+
+    /* ----- BACK INFO ----- */
+    .card .contentBx {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 12px;
+      background: rgba(255, 182, 193, 0.8);
+      color: #fff;
+      text-align: center;
+      border-radius: 0 0 18px 18px;
+    }
+    .card .contentBx h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 0 6px rgba(255, 20, 147, 0.8);
+    }
+    .card .contentBx span {
+      font-size: 0.9rem;
+      color: #ffe4ec;
+    }
+
+    /* ----- SOCIAL ICONS ----- */
+    .sci {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%) rotateY(180deg);
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      backface-visibility: hidden;
+    }
+    .sci li {
+      opacity: 0;
+      transform: translateY(20px) scale(0.8);
+      transition: 0.4s ease;
+    }
+ 
+    .sci a {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid #ff80b5;
+      background: rgba(255, 182, 193, 0.15);
+      color: #ff4f9f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+    }
+
+    /* ----- ANIMATIONS ----- */
+    @keyframes pulseGlow {
+      0% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 105, 180, 0.5); }
+      50% { transform: scale(1.1); box-shadow: 0 0 35px rgba(255, 20, 147, 0.9), 0 0 60px rgba(255, 182, 193, 0.8); }
+      100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 105, 180, 0.5); }
+    }
+
+    /* ----- FIREWORKS CANVAS ----- */
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 768px) {
+      .card {
+        width: 200px;
+        height: 280px;
+      }
+      .time h1 {
+        font-size: 1.5rem;
+      }
+      .container {
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px;
+      }
+      .card {
+        width: 160px;
+        height: 220px;
+      }
+      .time h1 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="fireworks"></canvas>
+  <section>
+    <div class="family">
+      <div class="time">
+        <h1><br>"TAG"<br></h1>
+      </div>
+      <div class="time">
+        <h1>"Chúc mừng em đã hoàn thành chặng đường 4 năm của mình, 
+          cánh cửa đại học đóng lại và vô vàn con đường mới đã được mở ra.
+          <br>Hãy kiên cường bước tiếp em nhé <br>
+          CHAAAAAAAA DỐ
+        </h1>
+      </div>
+
+      <!-- Card chính -->
+      <div class="container1">
+        <div class="card">
+          <div class="content">
+            <div class="imgBx"><img src="./em.jpg" alt=""></div>
+            <div class="contentBx">
+              <h3>Trương Thị Thu Huyền<br><span>19/02/2003</span></h3>
+            </div>
+          </div>
+          <ul class="sci">
+            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Các ảnh khác -->
+      <div class="container">
+        <div class="card"><div class="content"><div class="imgBx"><img src="./huyen2.jfif"></div></div></div>
+        <div class="card"><div class="content"><div class="imgBx"><img src="./huyen4.jfif"></div></div></div>
+        <div class="card"><div class="content"><div class="imgBx"><img src="./huyen1.jpg"></div></div></div>
+        <div class="card"><div class="content"><div class="imgBx"><img src="./huyen.jfif"></div></div></div>
+        <div class="card"><div class="content"><div class="imgBx"><img src="./huyen3.jfif"></div></div></div>
+        <div class="card"><div class="content"><div class="imgBx"><img src="./huyen5.jfif"></div></div></div>
+        <div class="card"><div class="content"><div class="imgBx"><img src="./huyen6.jfif"></div></div></div>
+        <div class="card"><div class="content"><div class="imgBx"><img src="./huyen7.jfif"></div></div></div>
+        <div class="card"><div class="content"><div class="imgBx"><img src="./huyen8.jfif"></div></div></div>
+        <div class="card"><div class="content"><div class="imgBx"><img src="./huyen9.jfif"></div></div></div>
+        <div class="card"><div class="content"><div class="imgBx"><img src="./huyen10.jfif"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    /* ----- HEART FLOAT ----- */
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+    setInterval(createHeart, 500);
+
+    /* ----- FIREWORKS ----- */
+    const canvas = document.getElementById("fireworks");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function createFirework(x, y) {
+      const count = 50;
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x, y,
+          angle: Math.random() * 2 * Math.PI,
+          speed: Math.random() * 5 + 2,
+          radius: 2,
+          life: 100
+        });
+      }
+    }
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p, i) => {
+        p.x += Math.cos(p.angle) * p.speed;
+        p.y += Math.sin(p.angle) * p.speed;
+        p.life--;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = "rgba(255,255,255," + p.life/100 + ")";
+        ctx.fill();
+        if (p.life <= 0) particles.splice(i, 1);
+      });
+    }
+    setInterval(drawParticles, 30);
+    setInterval(() => {
+      createFirework(Math.random() * canvas.width, Math.random() * canvas.height/2);
+    }, 2000);
+  </script>
+</body>
+</html>
